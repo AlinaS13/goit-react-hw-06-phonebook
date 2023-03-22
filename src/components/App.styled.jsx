@@ -10,3 +10,7 @@ export const Wraper = styled.div`
   border-radius: 10px;
   overflow: hidden;
 `;
+export const Container = styled.div`
+  margin-left: 20px;
+  margin-top: 40px;
+`;

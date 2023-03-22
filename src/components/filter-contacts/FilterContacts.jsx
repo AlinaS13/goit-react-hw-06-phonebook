@@ -1,8 +1,13 @@
-import PropTypes from 'prop-types';
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { filterContact } from '../../redux/actions';
 
-export const FilterContacts = ({ filter, onChangeInput }) => {
+export const FilterContacts = () => {
+  const filter = useSelector(state => state.filter);
+  const dispatch = useDispatch();
   const handleChange = event => {
-    onChangeInput(event.target.value);
+    // onChangeInput(event.target.value);
+    dispatch(filterContact(event.target.value));
   };
   return (
     <div>
@@ -13,13 +18,8 @@ export const FilterContacts = ({ filter, onChangeInput }) => {
         pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
         title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
         onChange={handleChange}
-        filter={filter}
+        defaultValue={filter}
       />
     </div>
   );
-};
-
-FilterContacts.propTypes = {
-  filter: PropTypes.string.isRequired,
-  onChangeInput: PropTypes.func.isRequired,
 };
