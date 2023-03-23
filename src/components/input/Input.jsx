@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from './Input.styled';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from '../../redux/actions';
+import { addContact } from '../../redux/contactSlice';
 
 export const Input = () => {
   const dispatch = useDispatch();
@@ -21,7 +21,7 @@ export const Input = () => {
       return alert('Contact is already added!');
     }
     dispatch(addContact(contact));
-    event.target.value.reset();
+    reset(event);
   };
 
   const onNameChange = event => {
@@ -32,9 +32,10 @@ export const Input = () => {
     setNumber(event.target.value);
   };
 
-  const reset = () => {
+  const reset = event => {
     setNumber('');
     setName('');
+    event.target.reset();
   };
   return (
     <div>

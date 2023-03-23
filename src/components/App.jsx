@@ -1,4 +1,3 @@
-import styled from 'styled-components';
 import React from 'react';
 import { Wraper, Container } from './App.styled';
 import { Input } from './input';
